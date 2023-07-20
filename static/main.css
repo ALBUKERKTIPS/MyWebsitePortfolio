@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Anton', sans-serif;
+    font-family: 'Carter One', cursive;
 }
 
 body {
@@ -14,8 +14,93 @@ header {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     background-image: radial-gradient(circle, #f84235, #860d04, #0f0100);
     background-size: cover;
     height: 100vh;
-    width: 100%
+    width: 100%;
+    position: relative;
+}
+header::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 2));
+    pointer-events: none;
+    z-index: 1;
+}
+.my-hello {
+    font-size: 2rem;
+    color: #ffbfaa;
+}
+h1 {
+    font-size: 5rem;
+    color: #ffdfd4;
+}
+.my-little-intro {
+    color: #ffbfaa;
+}
+.my-little-intro-2 {
+    color: #ffbfaa;
+    padding-bottom: 30px;
+}
+.my-links-icons {
+    display: flex;
+    width: 23vh;
+    justify-content: space-between;
+}
+.my-links-icons a{
+    transition: top ease 0.6s;
+    position: relative;
+    top: 0;
+}
+.my-links-icons a:hover{
+    top: -10px;
+}
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    padding-top: 50px;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.coming {
+    color: white;
+}
+.about-me {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: radial-gradient(circle, #860d04, #0f0100);
+    background-size: cover;
+    height: 100vh;
+    width: 100%;
+    position: relative;
+}
+.about-me::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to top, transparent, rgba(0, 0, 0, 5));
+    pointer-events: none;
+    z-index: 2;
+}
+footer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: black;
+    color: white;
+    width: 100%;
 }
