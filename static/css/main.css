@@ -2,6 +2,8 @@
     margin: 0;
     padding: 0;
     font-family: 'Carter One', cursive;
+    color: white;
+    text-decoration: none;
 }
 
 body {
@@ -53,7 +55,7 @@ h1 {
     justify-content: space-between;
 }
 .my-links-icons a{
-    transition: top ease 0.6s;
+    transition: top linear 0.3s;
     position: relative;
     top: 0;
 }
@@ -70,8 +72,43 @@ main {
     width: 100%;
     position: relative;
 }
-.coming {
-    color: white;
+.cards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 100vh;
+    width: 100%;
+}
+.smartphone-tablet {
+    width: 530px;
+    height: 330px;
+}
+.legend {
+    font-family: Arial;
+}
+.card-project-1 p {
+    display: flex;
+    justify-content: center;
+}
+.card-project-1 a{
+    transition: transform linear 0.4s;
+    position: relative;
+    top: 0;
+}
+.card-project-2 a{
+    transition: transform linear 0.4s;
+    position: relative;
+    top: 0;
+}
+.card-project-1:hover{
+    transform: scale(1.3);
+}
+.card-project-2:hover{
+    transform: scale(1.3);
+}
+.card-project-2 p {
+    display: flex;
+    justify-content: center;
 }
 .about-me {
     display: flex;

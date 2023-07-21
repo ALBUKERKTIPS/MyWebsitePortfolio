@@ -7,7 +7,7 @@
     <!-- Google Fonts(CARTER ONE)-->
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
     <!-- Import Style-->
-    <link rel="stylesheet" href="static/main.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='css/main.css')}}">
 </head>
 <body>
     <header>
@@ -39,19 +39,20 @@
         </section>
     </header>
     <main class="my-projects-cards">
-        <p class="coming">Projects coming Soo...</p>
         <div class="cards">
-            <div class="card-tasks-manager">
-
+            <div class="card-project-1">
+                <a href="#">
+                <img src="{{url_for('static', filename='images/smartphone-tablet.png')}}" alt="smartphone" class="smartphone-tablet">
+                <p>Project made in Formation</p>
+                    <p class="legend">Is a task management app for daily use</p>
+                </a>
             </div>
-            <div class="card-transfer-app">
-
-            </div>
-            <div class="card-products-manager">
-
-            </div>
-            <div class="card-table-reservation">
-
+            <div class="card-project-2">
+                <a href="#">
+                <img src="{{url_for('static', filename='images/smartphone-tablet.png')}}" alt="smartphone" class="smartphone-tablet">
+                <p>Project to Real Client</p>
+                    <p class="legend">Is a task management app for daily use</p>
+                </a>
             </div>
         </div>
     </main>
