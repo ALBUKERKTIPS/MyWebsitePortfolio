@@ -33,32 +33,35 @@ header::after {
     pointer-events: none;
     z-index: 1;
 }
-.my-hello {
+/* Reusable styles for headings and text */
+.text-title {
     font-size: 2rem;
     color: #ffbfaa;
 }
-h1 {
+.text-heading {
     font-size: 5rem;
     color: #ffdfd4;
 }
-.my-little-intro {
+.text-intro {
     color: #ffbfaa;
-    display: flex;
-    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 20px;
 }
-.my-little-intro-2 {
-    color: #ffbfaa;
-    padding-bottom: 30px;
+/* Reusable styles for links */
+.text-link {
+    color: #860d04;
+    font-family: arial;
 }
+/* My Header Links */
 .my-links-icons {
     display: flex;
-    width: 23vh;
-    justify-content: space-between;
+    justify-content: center;
 }
 .my-links-icons a{
     transition: top linear 0.3s;
     position: relative;
     top: 0;
+    padding: 10px;
 }
 .my-links-icons a:hover{
     top: -10px;
@@ -66,19 +69,19 @@ h1 {
 main {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     background: black;
     padding-top: 50px;
     min-height: 100vh;
     width: 100%;
+    flex-wrap: wrap;
 }
 .cards {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
-    max-width: 1200px;
-    flex-wrap: wrap;
+    width: 400px;
+    max-width: 100%;
 }
 .mockup {
     width: 320px;
@@ -96,7 +99,7 @@ main {
 .buttons-card a {
     padding-right: 5px;
 }
-.button-see, .button-github, .button-like {
+.button {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -108,11 +111,11 @@ main {
     border: 1px solid #860d04;
     cursor: pointer;
 }
-.button-see:hover, .button-github:hover, .button-like:hover {
+.button:hover {
     background: #860d04;
     color: #fff;
 }
-.button-see:hover svg, .button-github:hover svg, .button-like:hover svg {
+.button:hover svg {
     background: #860d04;
     fill: #fff;
     padding-right: 5px;
@@ -174,11 +177,16 @@ footer {
     width: 100%;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
 
 }
 @media (max-width: 768px) {
-
+    .text-title {
+        font-size: 2rem;
+    }
+    .text-heading {
+        font-size: 2.5rem;
+    }
 }
 @media (max-width: 1024px) {
 

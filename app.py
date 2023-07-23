@@ -1,8 +1,8 @@
-import json
-
 from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy  # Allow you to manage SQL from the flask web server
 from sqlalchemy import event
+import json
+
 
 app = Flask(__name__)  # Variable receive the server
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database/like_projects.db'
@@ -40,13 +40,19 @@ def home():
 def increment_like():
     project_id = request.form.get('project_id')
     if not project_id:
-        return jsonify({'error': 'Invalid project_id'}), 400
+        return 'Invalid project_id', 400
 
-    like_data = ProjectLike.query.filter_by(id=project_id).first()
+    try:
+        project_id = int(project_id)
+    except (ValueError, TypeError):
+        return 'Invalid project_id', 400
+
+    like_data = ProjectLike.query.get(project_id)
     if not like_data:
-        return jsonify({'error': 'Project not found'}), 404
+        return 'Project not found', 404
 
-    user_ip = request.remote_addr
+    # Use the proxy-provided header for the user's IP address if available
+    user_ip = request.headers.get('X-Forwarded-For') or request.headers.get('X-Real-IP') or request.remote_addr
 
     try:
         liked_ips_list = json.loads(like_data.liked_ips)  # Convert the liked_ips from JSON to a Python list
