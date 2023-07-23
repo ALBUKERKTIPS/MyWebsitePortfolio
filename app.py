@@ -1,5 +1,8 @@
+import json
+
 from flask import Flask, render_template, jsonify, request
 from flask_sqlalchemy import SQLAlchemy  # Allow you to manage SQL from the flask web server
+from sqlalchemy import event
 
 app = Flask(__name__)  # Variable receive the server
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database/like_projects.db'
@@ -9,9 +12,17 @@ database = SQLAlchemy(app)  # Allow you manage the database using SQLAlchemy syn
 
 class ProjectLike(database.Model):
     id = database.Column(database.Integer, primary_key=True)
+    image_url = database.Column(database.String)
     title = database.Column(database.String)
+    legend = database.Column(database.String)
     count = database.Column(database.Integer, default=0)
-    liked_ips = database.Column(database.String)  # Stores IPs that have already been liked, separated by a comma
+    liked_ips = database.Column(database.String, default=" ")  # Stores IPs that have already been liked
+
+
+@event.listens_for(ProjectLike.liked_ips, "set", retval=True)
+def set_liked_ips(target, value, oldvalue, initiator):
+    # If the value being set is None, return an empty string instead
+    return value if value is not None else ""
 
 
 with app.app_context():
@@ -21,27 +32,34 @@ with app.app_context():
 
 @app.route('/')  # Initial Route to website
 def home():
-    like_data = ProjectLike.query.filter_by(id=1).first()
-    if not like_data:
-        like_data = ProjectLike(id=1, count=0, liked_ips="")  # If there is nothing in the db ID: 0,counter:0,empty IP
-        database.session.add(like_data)
-        database.session.commit()
-
-    user_ip = request.remote_addr  # Checks if the current user has already liked
-    already_liked = user_ip in like_data.liked_ips.split(",")
-
-    return render_template("index.html", count=like_data.count, already_liked=already_liked)
+    projects = ProjectLike.query.all()
+    return render_template("index.html", projects=projects)
 
 
 @app.route('/increment', methods=['POST'])
 def increment_like():
-    like_data = ProjectLike.query.filter_by(id=1).first()
-    user_ip = request.remote_addr  # Checks if the user has previously liked
+    project_id = request.form.get('project_id')
+    if not project_id:
+        return jsonify({'error': 'Invalid project_id'}), 400
 
-    if user_ip not in like_data.liked_ips.split(","):
+    like_data = ProjectLike.query.filter_by(id=project_id).first()
+    if not like_data:
+        return jsonify({'error': 'Project not found'}), 404
+
+    user_ip = request.remote_addr
+
+    try:
+        liked_ips_list = json.loads(like_data.liked_ips)  # Convert the liked_ips from JSON to a Python list
+    except json.JSONDecodeError:
+        liked_ips_list = []
+
+    if user_ip not in liked_ips_list:
+        liked_ips_list.append(user_ip)
         like_data.count += 1
-        like_data.liked_ips += f',{user_ip}'
-        database.session.commit()
+
+    like_data.liked_ips = json.dumps(liked_ips_list)  # Convert liked_ips list to JSON before storing in the database
+
+    database.session.commit()
 
     return jsonify({'count': like_data.count})
 
