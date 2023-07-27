@@ -84,7 +84,7 @@ main {
     max-width: 100%;
 }
 .mockup {
-    width: 320px;
+    width: 305px;
     height: 200px;
 }
 .legend {
@@ -114,13 +114,16 @@ main {
 .button:hover {
     background: #860d04;
     color: #fff;
+    .count-number {
+        color: #fff;
+    }
 }
 .button:hover svg {
     background: #860d04;
     fill: #fff;
     padding-right: 5px;
 }
-#likeCount {
+.count-number {
     color: #860d04;
     font-family: arial;
     padding-left: 3px;
