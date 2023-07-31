@@ -266,6 +266,25 @@ footer {
   .card-about-me {
     max-width: 95%;
   }
+  .my-links-icons a:hover {
+    top:0;
+  }
+  .button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: #860d04;
+    font-family: arial;
+    padding: 3px 8px;
+    background: none;
+    border-radius: 10px;
+    border: 1px solid #860d04;
+    cursor: default;
+  }
+  .card-project:hover {
+    transform: scale(1);
+    z-index: auto;
+  }
 }
 @media (max-width: 768px) {
     .text-title {
