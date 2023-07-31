@@ -15,14 +15,13 @@
 
 <body>
     <header>
-        <p class="text-title">HI, I'M ANDERSON ALBUQUERQUE</p>
+        <p class="text-title">HI, IM ANDERSON ALBUQUERQUE</p>
         <h1 class="text-heading">PYTHON BACKEND DEVELOPER</h1>
         <p class="text-intro">
             I LIVE IN LISBON-PT, FOR 10 MONTHS SIMPLIFYING AND AUTOMATING TASKS WORKING AS A FREELANCER!
         </p>
         <p class="text-intro">
-            Nothing brings me more satisfaction than applying my skills to eliminate the use of paper,
-            thanks to the wonder of automation with Python.
+            Nothing brings me more satisfaction than applying my skills to eliminate the use of paper, thanks to the wonder of automation with Python.
         </p>
         <section class="my-links-icons">
             <a href="https://github.com/ALBUKERKTIPS">
@@ -52,7 +51,7 @@
                 <a href="#">
                 <img src="{{ url_for('static', filename=card.image_url) }}" alt="image-project" class="mockup">
                 <p class="text-title">{{ card.title }}</p>
-                    <p class="legend">{{ card.description }}</p>
+                    <p class="legend">{{ card.description | replace('\n', '<br>') | safe }}</p>
                 </a>
                 <div class="buttons-card">
                     <a href="{{ card.demo_url }}" class="text-link">
@@ -69,7 +68,7 @@
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="#860d04" class="bi bi-github" viewBox="0 0 16 16">
                             <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"/>
                             </svg>
-                            See The Code
+                            See the Code
                         </button>
                     </a>
                         <button class="button likeButton" data-project-id="{{ card.id }}">
@@ -84,10 +83,34 @@
         {% endfor %}
     </main>
     <section class="about-me">
-        <h2> About Me</h2>
+        <div class="card-about-me">
+            <h3 class="text-title"> About Me </h3>
+            <div class="card-my-photo">
+                <img src="static/images/my-photo.jpg" class="my-photo">
+            </div>
+            <div class="card-text-about-me">
+                <p>
+                    Hello! My name is Anderson Albuquerque, I am passionate about programming and I work as a Python Backend Developer.
+                    Currently, I am studying Python at the renowned Tokio School, seeking to further improve my knowledge in this powerful and versatile language. <br>
+                    <br>Although my professional journey began only 10 months ago as a freelancer, I have already had the opportunity to develop real projects that add value to companies here in Portugal.
+                    My technical skills involve the Python language as my strong ally, in addition to the knowledge in database using SQLite3, as well as the use of ORM SQLAlchemy.
+                    In addition, I am proficient in the Flask framework, which allows me to create web applications efficiently and robustly. Complementing my range of skills, I have mastery in HTML, CSS3 and Jinja2, which allows me to create attractive and interactive interfaces.<br>
+                    <br>During my journey, I have already developed four remarkable projects. Two of these projects were carried out while I was studying at Tokio School: a task manager as a web application and a product manager as a console application.
+                    In addition, I created my social menu in HTML and CSS, which integrates all my social networks in an elegant and functional way. Last but not least, I have the Tagus project, a web application that manages races made by employees of a company, which demonstrates my ability to create efficient solutions for different contexts.<br>
+                    <br>The passion for programming arose from my childhood, where I was already looking to create websites and games.
+                    My curiosity and fascination with technology have always driven me to pursue innovations and creative solutions.
+                    I have a strong interest in artificial intelligence and robotics, and dream of contributing to the development of advances in this area.<br>
+                    <br>One of my hobbies is creating websites in HTML and CSS to replace tasks that were previously done on paper, believing that technology can make processes more agile and sustainable.
+                    For me, believing that there is nothing that a machine or algorithm cannot learn and accomplish as efficiently, or even faster, than a human being, is a working philosophy that guides my actions and goals.<br>
+                    <br>My professional purpose is to collaborate to build an easier and more practical world, where technology is an ally to simplify people's lives and optimize processes in companies.
+                    I believe that programming has the power to turn ideas into reality and I am excited to continue my journey as a Python Backend Developer, always seeking new challenges and significant contributions to the world of technology.<br>
+                    <br>I am looking forward to the next stages of my career and to be part of projects that bring a positive impact on people's lives and society as a whole.
+                </p>
+            </div>
+        </div>
     </section>
     <footer>
-        <p>Made By Me</p>
+        <p>Made By Albukerk</p>
     </footer>
     <script>
     document.querySelectorAll('.likeButton').forEach(button => {

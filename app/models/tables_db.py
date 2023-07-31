@@ -24,4 +24,3 @@ class CardProject(database.Model):
     # Under we have the function show how will see when search em db
     def __repr__(self):
         return "<CardProject %r>" % self.title
-
