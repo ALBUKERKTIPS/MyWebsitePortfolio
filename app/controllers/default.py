@@ -1,6 +1,7 @@
 from app import app, database
-from flask import render_template, request, jsonify
+from flask import render_template, request, jsonify, send_file
 from app.models.tables_db import CardProject
+from werkzeug.utils import safe_join
 
 
 @app.route('/index')  # Initial Route to WebSite
@@ -20,3 +21,9 @@ def like():
             database.session.commit()
             return jsonify({'likes': card_project.like_count})
     return jsonify({'error': 'Project not found or invalid request'}), 400
+
+
+@app.route('/download_curriculum')
+def download_curriculum():
+    curriculum_file_path = safe_join(app.root_path, 'static', 'files', 'Curriculum Albukerk.pdf')
+    return send_file(curriculum_file_path, as_attachment=True)
