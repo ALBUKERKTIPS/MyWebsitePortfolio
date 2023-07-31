@@ -51,7 +51,7 @@
                 <a href="#">
                 <img src="{{ url_for('static', filename=card.image_url) }}" alt="image-project" class="mockup">
                 <p class="text-title">{{ card.title }}</p>
-                    <p class="legend">{{ card.description | replace('\n', '<br>') | safe }}</p>
+                    <p class="legend">{{ card.description }}</p>
                 </a>
                 <div class="buttons-card">
                     <a href="{{ card.demo_url }}" class="text-link">
