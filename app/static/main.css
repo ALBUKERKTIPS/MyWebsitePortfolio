@@ -75,6 +75,21 @@ header::after {
 .my-links-icons a:hover{
     top: -10px;
 }
+.arrow-down {
+    display: flex;
+    position: absolute;
+    bottom: 90px;
+    animation: pulse 1.3s infinite ease-in-out;
+    transform-origin: center;
+}
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(2);
+  }
+}
 main {
     display: flex;
     align-items: center;
