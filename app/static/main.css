@@ -147,7 +147,6 @@ main {
     }
 }
 .button svg {
-    background: #860d04;
     fill: #fff;
     padding-right: 5px;
 }
@@ -281,7 +280,7 @@ footer {
     color: #860d04;
     font-family: arial;
     padding: 3px 8px;
-    background: none;
+    background: #860d04;
     border-radius: 10px;
     border: 1px solid #860d04;
     cursor: default;
