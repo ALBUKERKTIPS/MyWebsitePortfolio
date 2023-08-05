@@ -9,6 +9,7 @@
     <title>ALBUKERK: Python BackEnd</title>
     <!-- Google Fonts(CARTER ONE)-->
     <link href="https://fonts.googleapis.com/css2?family=Carter+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
     <!-- Import Style-->
     <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
 </head>
@@ -117,7 +118,7 @@
         </div>
     </section>
     <footer>
-        <p>Made By Albukerk</p>
+        <p>Made By Albukerk © 2023</p>
     </footer>
     <script>
     document.querySelectorAll('.likeButton').forEach(button => {
@@ -127,19 +128,21 @@
         formData.append('project_id', projectId);
 
         fetch('/liked', {
-          method: 'POST',
-          body: formData
+           method: 'POST',
+           body: formData
         })
         .then(response => response.json())
         .then(data => {
           const likeCountElement = document.getElementById(`likeCount_${projectId}`);
           likeCountElement.textContent = data.likes;
+
+          const likeIconElement = document.getElementById(`likeIcon_${projectId}`);
         })
         .catch(error => {
           console.error('Error:', error);
         });
       });
     });
-    </script>
+</script>
 </body>
 </html>

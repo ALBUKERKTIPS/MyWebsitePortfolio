@@ -1,7 +1,7 @@
 * {
     margin: 0;
     padding: 0;
-    font-family: 'Carter One', cursive;
+    font-family: 'Roboto Slab', serif;
     color: white;
     text-decoration: none;
 }
@@ -16,7 +16,7 @@ header {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: radial-gradient(circle, #f84235, #860d04, #0f0100);
+    background-image: radial-gradient(circle, #860d04, #0f0100);
     background-size: cover;
     height: 100vh;
     width: 100%;
@@ -34,6 +34,9 @@ header::after {
     background: linear-gradient(transparent, rgba(0, 0, 0, 2));
     pointer-events: none;
     z-index: 1;
+}
+header .text-intro {
+    font-style: italic;
 }
 /* Reusable styles for headings and text */
 .text-title {
@@ -132,25 +135,24 @@ main {
     color: #860d04;
     font-family: arial;
     padding: 3px 8px;
-    background: none;
+    background: #860d04;
+    color: #fff;
     border-radius: 10px;
     border: 1px solid #860d04;
     cursor: pointer;
 }
 .button:hover {
-    background: #860d04;
-    color: #fff;
     .count-number {
         color: #fff;
     }
 }
-.button:hover svg {
+.button svg {
     background: #860d04;
     fill: #fff;
     padding-right: 5px;
 }
 .count-number {
-    color: #860d04;
+    color: #fff;
     font-family: arial;
     padding-left: 3px;
 }
@@ -256,15 +258,18 @@ footer {
 @media (max-width: 500px) {
   .text-title {
     font-size: 1rem;
+    padding: 0 1rem 0 1rem;
   }
   .text-heading {
     font-size: 2.3rem;
+    padding: 0 1rem 0 1rem;
   }
   .text-intro {
     font-size: 1.1rem;
+    padding: 0 1rem 0 1rem;
   }
   .card-about-me {
-    max-width: 95%;
+    max-width: 88%;
   }
   .my-links-icons a:hover {
     top:0;
