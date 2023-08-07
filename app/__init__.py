@@ -6,4 +6,4 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database/storage.db'
 app.config['DEBUG'] = True
 database = SQLAlchemy(app)
 
-from app.controllers import default
+from app.controllers import routes

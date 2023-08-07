@@ -24,3 +24,10 @@ class CardProject(database.Model):
     # Under we have the function show how will see when search em db
     def __repr__(self):
         return "<CardProject %r>" % self.title
+
+
+class Tasks(database.Model):
+    __tablename__ = "tasks"
+    id = database.Column(database.Integer, primary_key=True)
+    content = database.Column(database.String(200), nullable=True)
+    done = database.Column(database.Boolean)

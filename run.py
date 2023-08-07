@@ -1,5 +1,5 @@
 from app import app, database
-from app.models.tables_db import CardProject
+from app.models.tables_db import CardProject, Tasks
 
 with app.app_context():
     database.create_all()
