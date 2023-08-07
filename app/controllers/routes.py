@@ -25,7 +25,7 @@ def like():
 
 @app.route('/download_curriculum')
 def download_curriculum():
-    curriculum_file_path = safe_join(app.root_path, 'static', 'files', 'Anderson Albuquerque.pdf')
+    curriculum_file_path = safe_join(app.root_path, 'static', 'files', 'Anderson Albuquerque 1.2.pdf')
     return send_file(curriculum_file_path, as_attachment=True)
 
 
